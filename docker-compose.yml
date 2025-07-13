@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/var/www/html/frontend
+      - ./backend:/var/www/html/backend
+      - ./docker/apache-config.conf:/etc/apache2/sites-available/000-default.conf
+    environment:
+      UPDATE_SECRET: "secure_crypto_key" # Должен совпадать с константой в script.js
+      COINGECKO_API_KEY: "your_api_key_here"
+    depends_on:
+      - mysql
+    # Добавляем для отладки
+    command: >
+      bash -c "echo 'UPDATE_SECRET=$$UPDATE_SECRET' >> /etc/environment
+      && apache2-foreground"
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: crypto_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

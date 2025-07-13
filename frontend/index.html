@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Криптовалютный трекер</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-coins"></i> Криптовалютный трекер</h1>
+            <div class="controls">
+                <div id="lastUpdated">Последнее обновление: <strong>--:--</strong></div>
+                <button id="refreshBtn" class="btn">
+                    <i class="fas fa-sync-alt"></i> Обновить данные
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <div class="table-responsive">
+                <table id="cryptoTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Тикер</th>
+                            <th>Название</th>
+                            <th>Цена</th>
+                            <th>24ч Изменение</th>
+                            <th>Капитализация</th>
+                            <th>24ч Объем</th>
+                            <th>7д График</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
